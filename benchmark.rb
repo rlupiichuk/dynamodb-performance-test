@@ -22,11 +22,11 @@ threads = [20, 40, 60, 80, 100, 120, 140, 160]
 
 tables.each do |table|
   records.each do |num_records|
-    avg_read_times    = []
-    avg_write_times   = []
+    avg_read_times  = []
+    avg_write_times = []
     top_read_times  = []
     top_write_times = []
-    avg_query_times   = []
+    avg_query_times = []
     top_query_times = []
 
     BenchmarkHelpers.log_to_file "records: #{num_records}, table: #{table}"
