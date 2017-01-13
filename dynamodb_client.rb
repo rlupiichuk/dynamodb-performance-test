@@ -17,6 +17,7 @@ class DynamoDBClient
   def recreate_table(table_name)
     with_retry { drop_table(table_name) }
     with_retry { create_table(table_name) }
+    sleep 5
   end
 
   def drop_table(table_name)
@@ -66,8 +67,11 @@ class DynamoDBClient
          Aws::DynamoDB::Errors::LimitExceededException,
          Aws::DynamoDB::Errors::ProvisionedThroughputExceededException,
          Aws::DynamoDB::Errors::ThrottlingException,
-         Aws::DynamoDB::Errors::UnrecognizedClientException => e
+         Aws::DynamoDB::Errors::UnrecognizedClientException,
+         Aws::DynamoDB::Errors::ResourceInUseException,
+         Aws::DynamoDB::Errors::ResourceNotFoundException => e
     raise e if (tries -= 1) == 0
+    sleep((14 - tries) * 0.2)
     retry
   end
 

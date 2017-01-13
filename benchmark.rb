@@ -18,7 +18,7 @@ client = DynamoDBClient.new
 
 tables = ['performance-1', 'performance-2', 'performance-3']
 records = [1_000, 10_000, 100_000]
-threads = [20, 40, 60, 80, 100, 120, 140, 160]
+threads = [20, 40, 60, 80, 100]
 
 tables.each do |table|
   records.each do |num_records|
