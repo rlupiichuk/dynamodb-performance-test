@@ -2,10 +2,12 @@
 
 This is a performance testing of AWS DynamoDB database. The purpose of it was to find out how DynamoDB behaves in a loaded system.
 
-All tests were performed on a t2-micro instance against 3 tables filled with 1000, 10000 and 100000 rows (9 tests in total):
+All tests were performed on a t2-micro instance against 3 tables:
  * table *performance-1* didn't have secondary indices
  * table *performance-2* had one secondary index
  * table *performance-3* had two secondary indices
+
+Axes are time in seconds and operations per second.
 
 Feel free to investigate the source code of the test for more details.
 
