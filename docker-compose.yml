@@ -1,15 +1,12 @@
 version: '2'
 services:
   app:
-    image: 979514658570.dkr.ecr.eu-west-1.amazonaws.com/mes-base-image:0.24
-    command: bundle exec rspec
+    build: .
     volumes:
       - .:/app
       - $HOME/.aws:/root/.aws:ro
     links:
       - dynamodb
-    environment:
-      - BUNDLE_PATH=/app/.bundle
     tty: true
     stdin_open: true
 
