@@ -17,7 +17,7 @@ class DynamoDBClient
   def recreate_table(table_name)
     with_retry { drop_table(table_name) }
     with_retry { create_table(table_name) }
-    sleep 5
+    wait_for_table(table_name)
   end
 
   def drop_table(table_name)
@@ -73,6 +73,17 @@ class DynamoDBClient
     raise e if (tries -= 1) == 0
     sleep((14 - tries) * 0.2)
     retry
+  end
+
+  def wait_for_table(table_name)
+    5.times do
+      begin
+        with_retry { put_item(table_name, item: { uuid: SecureRandom.uuid, content_id: SecureRandom.uuid, created_at: Time.now.to_i }) }
+        break
+      rescue Aws::DynamoDB::Errors::ResourceNotFoundException
+        false
+      end
+    end
   end
 
   def aws_client

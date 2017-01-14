@@ -26,4 +26,9 @@ module BenchmarkHelpers
     top = times.sort[-(times.size / 10)..-1]
     avg(top)
   end
+
+  def self.full_avg(times)
+    top = times[-(times.size / 10)..-1]
+    avg(top)
+  end
 end

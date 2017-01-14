@@ -22,12 +22,13 @@ threads = [20, 40, 60, 80, 100]
 
 tables.each do |table|
   records.each do |num_records|
-    avg_read_times  = []
-    avg_write_times = []
-    top_read_times  = []
-    top_write_times = []
-    avg_query_times = []
-    top_query_times = []
+    avg_read_times   = []
+    avg_write_times  = []
+    top_read_times   = []
+    top_write_times  = []
+    full_write_times = []
+    avg_query_times  = []
+    top_query_times  = []
 
     BenchmarkHelpers.log_to_file "records: #{num_records}, table: #{table}"
 
@@ -47,6 +48,7 @@ tables.each do |table|
 
       avg_write_times << BenchmarkHelpers.avg(times)
       top_write_times << BenchmarkHelpers.top_avg(times)
+      full_write_times << BenchmarkHelpers.full_avg(times)
 
       times = Parallel.map(0..num_records, in_threads: num_threads) do |i|
         BenchmarkHelpers.progress(i)
@@ -73,7 +75,7 @@ tables.each do |table|
       end
     end
 
-    data = [avg_write_times, top_write_times,
+    data = [avg_write_times, top_write_times, full_write_times,
             avg_read_times, top_read_times,
             avg_query_times, top_query_times]
 
@@ -83,7 +85,7 @@ tables.each do |table|
       data: data,
       axis_with_labels: 'x,y',
       line_colors: 'da4242,d141b9,41d1c3,41d146,27477a,35277a',
-      legend: ['Write avg', 'Write top avg', 'Read avg', 'Read top avg', 'Query avg', 'Query top avg'],
+      legend: ['Write avg', 'Write top avg', 'Write full avg', 'Read avg', 'Read top avg', 'Query avg', 'Query top avg'],
       axis_labels: [threads.map(&:to_s).join('|')],
       axis_range: [nil, BenchmarkHelpers.minmax(data)]
     )
