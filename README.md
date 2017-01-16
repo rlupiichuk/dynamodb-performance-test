@@ -11,8 +11,7 @@ Axes are time in seconds and operations per second.
 
 Feel free to investigate the source code of the test for more details.
 
-![records: 1000, table: performance-1](http://chart.apis.google.com/chart?chxl=0:|20|40|60|80|100&chxt=x,y&chco=da4242,d141b9,41d1c3,41d146,27477a,35277a&chd=s:DFLKT,JOal9,E
-FHHM,BDHJO,FKQZb,,&chdl=Write+avg|Write+top+avg|Write+full+avg|Read+avg|Read+top+avg|Query+avg|Query+top+avg&chtt=performance-1+(size+1000)&cht=lc&chs=600x300&chxr=1,0.014120031875296757,0.4804469841904938)
+![records: 1000, table: performance-1](http://chart.apis.google.com/chart?chxl=0:|20|40|60|80|100&chxt=x,y&chco=da4242,d141b9,41d1c3,41d146,27477a,35277a&chd=s:DFLKT,JOal9,EFHHM,BDHJO,FKQZb,,&chdl=Write+avg|Write+top+avg|Write+full+avg|Read+avg|Read+top+avg|Query+avg|Query+top+avg&chtt=performance-1+(size+1000)&cht=lc&chs=600x300&chxr=1,0.014120031875296757,0.4804469841904938)
 
 ![records: 10000, table: performance-1](http://chart.apis.google.com/chart?chxl=0:|20|40|60|80|100&chxt=x,y&chco=da4242,d141b9,41d1c3,41d146,27477a,35277a&chd=s:HNSXd,Pbkz9,HNPPZ,DJNUY,JUeqv,,&chdl=Write+avg|Write+top+avg|Write+full+avg|Read+avg|Read+top+avg|Query+avg|Query+top+avg&chtt=performance-1+(size+10000)&cht=lc&chs=600x300&chxr=1,0.014717743662844812,0.24007440203661098)
 
